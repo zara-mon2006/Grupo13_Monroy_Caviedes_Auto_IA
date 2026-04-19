@@ -1,0 +1,14 @@
+
+=======================================================
+📅 Fecha y hora: 2026-04-18 23:39:18
+📂 Carpeta organizada: desordenada
+-------------------------------------------------------
+Archivos movidos:
+   📁 audio_video: 3 archivo(s)
+   📁 codigo: 4 archivo(s)
+   📁 comprimidos: 2 archivo(s)
+   📁 datos: 3 archivo(s)
+   📁 documentos: 7 archivo(s)
+   📁 imagenes: 4 archivo(s)
+   ✅ Total: 23 archivos
+=======================================================
