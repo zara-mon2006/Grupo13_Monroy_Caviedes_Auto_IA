@@ -1,11 +1,10 @@
 # Grupo13_Monroy_Caviedes
-
 **Grupo 13 — Software de Automatización | Segundo Corte**
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square)
 ![n8n](https://img.shields.io/badge/n8n-Automatización-coral?style=flat-square)
 ![Claude](https://img.shields.io/badge/Anthropic-Claude_API-purple?style=flat-square)
-![MCP](https://img.shields.io/badge/Protocol-MCP-teal?style=flat-square)
+![Agente IA](https://img.shields.io/badge/Agente-IA-green?style=flat-square)
 
 ---
 
@@ -31,16 +30,22 @@ Automatización robusta de **10 nodos** que recibe tickets de soporte a través 
 
 ---
 
-### 🔗 Proyecto 2 — Integración n8n como Servidor MCP con Claude Desktop
+### 🐍 Proyecto 2 — Agente Organizador de Archivos con Python y Claude
 
-Configuración de **n8n como servidor MCP (Model Context Protocol)** conectado a Claude Desktop para crear automatizaciones de análisis de facturas mediante lenguaje natural.
+Desarrollo de un **agente de Inteligencia Artificial** construido en Python que escanea una carpeta desordenada, utiliza la API de Claude (Anthropic) para clasificar los archivos por categoría y los organiza automáticamente en subcarpetas.
 
-- Claude Desktop actúa como agente principal
-- No se escriben prompts en n8n — Claude entiende la instrucción y ejecuta el workflow automáticamente
-- Análisis de facturas mediante conversación directa con el modelo
-- Arquitectura orientada a agentes donde el LLM controla la ejecución de tareas
+El agente implementa una arquitectura de tres capas:
 
-**Tecnologías:** n8n (MCP Server) · Claude Desktop · Model Context Protocol · Anthropic API
+- **Percepción** — escanea el directorio y lista todos los archivos encontrados
+- **Razonamiento** — envía los nombres a Claude, que decide la categoría de cada archivo usando lenguaje natural
+- **Acción** — crea las subcarpetas y mueve cada archivo a su destino correspondiente
+
+Funcionalidades adicionales:
+- Muestra un **plan de organización** con confirmación del usuario antes de actuar
+- Genera un **log automático** (`log_organizacion.txt`) con fecha, hora y resumen de cada ejecución
+- Manejo de errores y archivos sin extensión
+
+**Tecnologías:** Python 3.11 · Anthropic Claude API · VS Code · `pathlib` · `shutil` · `json`
 
 ---
 
@@ -55,7 +60,7 @@ Configuración de **n8n como servidor MCP (Model Context Protocol)** conectado a
 
 ## 🎓 Programa Académico
 
-**Ingeniería Mecatrónica**
+**Ingeniería Mecatrónica**  
 Asignatura: Software de Automatización — 2026A
 
 ---
@@ -67,8 +72,11 @@ Grupo13_Monroy_Caviedes/
 ├── proyecto1_soporte_ia/
 │   ├── workflow_n8n.json        # Flujo exportado de n8n (10 nodos)
 │   └── README.md
-├── proyecto2_mcp_facturas/
-│   ├── mcp_config/              # Configuración del servidor MCP
+├── proyecto2_agente_organizador/
+│   ├── organizador.py           # Agente principal
+│   ├── crear_archivos_prueba.py # Script de archivos de prueba
+│   ├── test_api.py              # Verificación de conexión API
+│   ├── .env                     # API Key (no incluir en git)
 │   └── README.md
 └── README.md
 ```
@@ -79,7 +87,7 @@ Grupo13_Monroy_Caviedes/
 
 - [n8n](https://n8n.io/) (self-hosted o cloud)
 - Cuenta en [Anthropic](https://console.anthropic.com/) con API Key activa
-- Claude Desktop (para Proyecto 2)
+- Python 3.11 con entorno virtual (`venv`)
 - Credenciales de Gmail y Google Sheets (para Proyecto 1)
 
 ---
@@ -92,9 +100,28 @@ Grupo13_Monroy_Caviedes/
 3. Activar el workflow y enviar un ticket de prueba al webhook
 
 ### Proyecto 2
-1. Configurar n8n como servidor MCP (ver carpeta `mcp_config/`)
-2. Conectar Claude Desktop al servidor MCP
-3. Hablar con Claude en lenguaje natural para ejecutar análisis de facturas
+1. Crear y activar el entorno virtual:
+   ```
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+2. Instalar dependencias:
+   ```
+   pip install anthropic
+   ```
+3. Configurar la API Key en el archivo `.env`:
+   ```
+   ANTHROPIC_API_KEY=sk-ant-...
+   ```
+4. Crear archivos de prueba:
+   ```
+   python crear_archivos_prueba.py
+   ```
+5. Ejecutar el agente:
+   ```
+   python organizador.py
+   ```
+6. Ingresar la ruta de la carpeta a organizar y confirmar el plan
 
 ---
 
