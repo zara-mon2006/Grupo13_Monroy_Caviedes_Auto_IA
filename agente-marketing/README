@@ -1,0 +1,143 @@
+**Proyecto 3 — Grupo 13 | Software de Automatización | Tercer Corte**
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square)
+![Claude](https://img.shields.io/badge/Anthropic-Claude_API-purple?style=flat-square)
+![LangGraph](https://img.shields.io/badge/LangGraph-Multi--Agente-orange?style=flat-square)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-red?style=flat-square)
+![VS Code](https://img.shields.io/badge/Editor-VS_Code-007ACC?style=flat-square)
+
+---
+
+## 📌 Descripción
+
+Aplicación web de **Multi-Agentes de Inteligencia Artificial** desarrollada en Python que orquesta 4 agentes especializados usando **LangGraph** y la API de **Claude (Anthropic)** para generar propuestas comerciales de marketing profesionales. La interfaz se visualiza en tiempo real con **Streamlit** y permite exportar la propuesta en formato Markdown y PDF.
+
+---
+
+## 🏗️ Arquitectura del Pipeline Multi-Agente
+
+| Agente | Framework | Función | Output |
+|---|---|---|---|
+| 🔍 **Agente 1: Analista** | PEST + Pain-Gain-Fear | Analiza el mercado y contexto del cliente | `market_analysis` |
+| 🏛️ **Agente 2: Estratega** | Messaging Hierarchy Canvas | Define posicionamiento y mensajes clave | `brand_strategy` |
+| ✍️ **Agente 3: Redactor** | StoryBrand (11 secciones) | Redacta la propuesta completa (+850 palabras) | `proposal_draft` |
+| ✅ **Agente 4: Editor** | PACT Rubric | Revisa y pule el documento final | `final_proposal` |
+
+Los 4 agentes comparten un estado común (`MarketingProposalState`) que fluye en cadena a través del grafo de LangGraph.
+
+---
+
+## 🗂️ Estructura del Proyecto
+
+```
+proyecto3_agente_marketing/
+├── app.py               # Aplicación principal: agentes + grafo + UI Streamlit
+├── requirements.txt     # Dependencias Python
+├── .env                 # API Key (no subir a git)
+└── README.md
+```
+
+---
+
+## ⚙️ Requisitos
+
+- Python 3.10+
+- Cuenta activa en [Anthropic](https://console.anthropic.com/) con API Key
+- Visual Studio Code
+
+---
+
+## 🚀 Instalación y Uso
+
+### 1. Entrar a la carpeta del proyecto
+
+```bash
+cd proyecto3_agente_marketing
+```
+
+### 2. Crear y activar el entorno virtual
+
+```bash
+python -m venv venv
+```
+
+Windows (CMD):
+```cmd
+venv\Scripts\activate.bat
+```
+
+### 3. Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configurar la API Key
+
+Crear un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+
+```
+ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxx
+```
+
+### 5. Ejecutar la aplicación
+
+```bash
+streamlit run app.py
+```
+
+Se abrirá automáticamente el navegador en `http://localhost:8501`.
+
+### 6. Generar una propuesta
+
+Completa el formulario en el panel lateral con los datos del cliente y haz clic en **🚀 Generar Propuesta**. Los 4 agentes trabajarán en cadena mostrando el progreso en tiempo real.
+
+---
+
+## 📋 Ejemplo de Salida
+
+```
+🔍 Agente 1: Analizando el mercado...        ████░░░░░░░░  25%
+🏛️ Agente 2: Definiendo estrategia de marca... ████████░░░░  50%
+✍️ Agente 3: Redactando la propuesta...       ████████████░  75%
+✅ Agente 4: Editando y puliendo...           ████████████  100%
+
+✅ ¡Propuesta generada exitosamente!
+
+📄 Vista Formateada | 📝 Texto Plano | ⬇️ Descargar .md y .pdf
+```
+
+---
+
+## 📦 Dependencias
+
+| Librería | Versión | Función |
+|---|---|---|
+| `anthropic` | >=0.40.0 | Comunicación con Claude API |
+| `streamlit` | >=1.40.0 | Interfaz web interactiva |
+| `langchain` | >=0.3.0 | Mensajes estandarizados (HumanMessage, SystemMessage) |
+| `langchain-anthropic` | >=0.3.0 | Integración LangChain con Claude |
+| `langgraph` | >=0.2.0 | Orquestación del grafo de agentes |
+| `reportlab` | >=4.0.0 | Generación de documentos PDF |
+| `python-dotenv` | >=1.0.0 | Variables de entorno desde archivo .env |
+
+---
+
+## 👥 Integrantes
+
+| Nombre | Rol |
+|---|---|
+| **Zara Melisa Monroy Vera** | Desarrolladora |
+| **Juan David Caviedes Cortes** | Desarrollador |
+
+---
+
+## 🎓 Información Académica
+
+**Programa:** Ingeniería Mecatrónica  
+**Asignatura:** Software de Automatización — 2026A  
+**Institución:** Corporación Universitaria del Huila — CORHUILA
+
+---
+
+> Proyecto académico desarrollado para la asignatura de Software de Automatización — Ingeniería Mecatrónica, 2026A.
