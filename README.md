@@ -1,16 +1,18 @@
 # Grupo13_Monroy_Caviedes
-**Grupo 13 — Software de Automatización | Segundo Corte**
+**Grupo 13 — Software de Automatización | Segundo y Tercer Corte**
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square)
 ![n8n](https://img.shields.io/badge/n8n-Automatización-coral?style=flat-square)
 ![Claude](https://img.shields.io/badge/Anthropic-Claude_API-purple?style=flat-square)
 ![Agente IA](https://img.shields.io/badge/Agente-IA-green?style=flat-square)
+![LangGraph](https://img.shields.io/badge/LangGraph-Multi--Agente-orange?style=flat-square)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-red?style=flat-square)
 
 ---
 
 ## 📌 Descripción del Proyecto
 
-Este repositorio contiene el desarrollo del **Segundo Corte** del proyecto de Software de Automatización, orientado a la integración de **Inteligencia Artificial con flujos de automatización** mediante la API de Anthropic (Claude) y la plataforma n8n, conforme a los lineamientos académicos del programa de Ingeniería Mecatrónica.
+Este repositorio contiene el desarrollo del **Segundo y Tercer Corte** del proyecto de Software de Automatización, orientado a la integración de **Inteligencia Artificial con flujos de automatización** mediante la API de Anthropic (Claude) y la plataforma n8n, conforme a los lineamientos académicos del programa de Ingeniería Mecatrónica.
 
 ---
 
@@ -49,6 +51,29 @@ Funcionalidades adicionales:
 
 ---
 
+## 🎯 Alcance del Tercer Corte
+
+### 🎯 Proyecto 3 — Generador de Propuestas de Marketing con Multi-Agentes IA
+
+Desarrollo de una **aplicación web multi-agente** construida en Python que orquesta 4 agentes de Inteligencia Artificial especializados usando **LangGraph** y **Claude de Anthropic** para generar propuestas comerciales de marketing profesionales, exportables en PDF y Markdown, visualizado en tiempo real con **Streamlit**.
+
+El sistema implementa un pipeline de 4 agentes en cadena que comparten un estado común (`MarketingProposalState`):
+
+- 🔍 **Agente 1: Analista** — Analiza el mercado usando el framework PEST + Pain-Gain-Fear
+- 🏛️ **Agente 2: Estratega** — Define posicionamiento y mensajes clave con el Messaging Hierarchy Canvas
+- ✍️ **Agente 3: Redactor** — Redacta la propuesta completa (11 secciones, +850 palabras) con el framework StoryBrand
+- ✅ **Agente 4: Editor** — Revisa y pule el documento aplicando el PACT Rubric (Personalización, Acción, Claridad, Tono)
+
+Funcionalidades adicionales:
+- Interfaz web interactiva con **barra de progreso en tiempo real** por cada agente
+- **Exportación en Markdown y PDF** con estilos corporativos (ReportLab)
+- API Key cargada de forma segura desde archivo `.env`
+- Visualización formateada, texto plano editable y descarga directa
+
+**Tecnologías:** Python 3.11 · LangGraph · LangChain · Claude Haiku (Anthropic) · Streamlit · ReportLab · python-dotenv
+
+---
+
 ## 👥 Integrantes
 
 | Nombre | Rol |
@@ -76,6 +101,11 @@ Grupo13_Monroy_Caviedes/
 │   ├── organizador.py           # Agente principal
 │   ├── crear_archivos_prueba.py # Script de archivos de prueba
 │   ├── test_api.py              # Verificación de conexión API
+│   ├── .env                     # API Key (no incluir en git)
+│   └── README.md
+├── proyecto3_agente_marketing/
+│   ├── app.py                   # Aplicación principal (agentes + grafo + UI)
+│   ├── requirements.txt         # Dependencias Python
 │   ├── .env                     # API Key (no incluir en git)
 │   └── README.md
 └── README.md
@@ -122,6 +152,26 @@ Grupo13_Monroy_Caviedes/
    python organizador.py
    ```
 6. Ingresar la ruta de la carpeta a organizar y confirmar el plan
+
+### Proyecto 3
+1. Crear y activar el entorno virtual:
+   ```
+   python -m venv venv
+   .\venv\Scripts\activate.bat
+   ```
+2. Instalar dependencias:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Configurar la API Key en el archivo `.env`:
+   ```
+   ANTHROPIC_API_KEY=sk-ant-...
+   ```
+4. Ejecutar la aplicación:
+   ```
+   streamlit run app.py
+   ```
+5. Completar el formulario con los datos del cliente y hacer clic en **Generar Propuesta**
 
 ---
 
